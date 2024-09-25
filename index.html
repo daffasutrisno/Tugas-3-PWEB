@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Registrasi</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Link ke file CSS -->
+  </head>
+  <body>
+    <div class="form-container" id="formContainer">
+      <h2>Form Registrasi</h2>
+      <form id="registrationForm">
+        <!-- Input Nama Lengkap -->
+        <div class="form-group">
+          <label for="name">Nama Lengkap:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Masukkan nama lengkap Anda"
+          />
+        </div>
+
+        <!-- Input Nama Panggilan -->
+        <div class="form-group">
+          <label for="nickname">Nama Panggilan:</label>
+          <input
+            type="text"
+            id="nickname"
+            name="nickname"
+            required
+            placeholder="Masukkan nama panggilan Anda"
+          />
+        </div>
+
+        <!-- Input Nomor Telepon -->
+        <div class="form-group">
+          <label for="phone">Nomor Telepon:</label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            required
+            placeholder="Masukkan nomor telepon Anda"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+          />
+        </div>
+
+        <!-- Radio Button Jenis Kelamin -->
+        <div class="form-group">
+          <label>Jenis Kelamin:</label>
+          <div class="inline-group">
+            <label for="male">
+              <input
+                type="radio"
+                id="male"
+                name="gender"
+                value="Pria"
+                required
+              />
+              Pria
+            </label>
+            <label for="female">
+              <input
+                type="radio"
+                id="female"
+                name="gender"
+                value="Wanita"
+                required
+              />
+              Wanita
+            </label>
+          </div>
+        </div>
+
+        <!-- Checkbox Bidang Hobi -->
+        <div class="form-group">
+          <label>Bidang Hobi:</label>
+          <div class="inline-group">
+            <label for="sport">
+              <input type="checkbox" id="sport" name="hobby" value="Olahraga" />
+              Olahraga
+            </label>
+            <label for="music">
+              <input type="checkbox" id="seni" name="hobby" value="Seni" /> Seni
+            </label>
+            <label for="reading">
+              <input
+                type="checkbox"
+                id="lainnya"
+                name="hobby"
+                value="Lainnya"
+              />
+              Lainnya
+            </label>
+          </div>
+        </div>
+
+        <!-- Drop Down Kota Asal -->
+        <div class="form-group">
+          <label for="city">Kota Kuliah:</label>
+          <select id="city" name="city" required>
+            <option value="">Pilih Kota</option>
+            <option value="Jakarta">Jakarta</option>
+            <option value="Bandung">Bandung</option>
+            <option value="Surabaya">Surabaya</option>
+            <option value="Yogyakarta">Yogyakarta</option>
+          </select>
+        </div>
+
+        <!-- Drop Down Semester -->
+        <div class="form-group">
+          <label for="semester">Semester:</label>
+          <select id="semester" name="semester" required>
+            <option value="">Pilih Semester</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+        </div>
+
+        <!-- Drop Down IPK -->
+        <div class="form-group">
+          <label for="ipk">IPK:</label>
+          <select id="ipk" name="ipk" required>
+            <option value="">Pilih IPK</option>
+            <option value=">3.5">Lebih dari 3.5</option>
+            <option value=">3.0">Lebih dari 3.0</option>
+            <option value=">2.5">Lebih dari 2.5</option>
+            <option value=">2.0">Lebih dari 2.0</option>
+            <option value="<=2.0">Kurang dari sama dengan 2.0</option>
+          </select>
+        </div>
+
+        <!-- Text Area Total SKS -->
+        <div class="form-group">
+          <label for="sks">Total SKS:</label>
+          <input
+            type="text"
+            id="sks"
+            name="sks"
+            required
+            placeholder="Masukkan total SKS"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);"
+          />
+        </div>
+
+        <!-- Text Area Biografi Singkat -->
+        <div class="form-group">
+          <label for="bio">Biografi Singkat:</label>
+          <textarea
+            id="bio"
+            name="bio"
+            rows="4"
+            placeholder="Tuliskan sedikit tentang diri Anda..."
+            required
+          ></textarea>
+        </div>
+
+        <!-- Submit and Reset -->
+        <div class="btn-group">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Kontainer Rincian Data -->
+    <div class="result-container" id="resultContainer">
+      <h2>Rincian Data Anda</h2>
+      <table>
+        <tr>
+          <th>Label</th>
+          <th>Data</th>
+        </tr>
+        <tr>
+          <td>Nama Lengkap:</td>
+          <td id="resultName"></td>
+        </tr>
+        <tr>
+          <td>Nama Panggilan:</td>
+          <td id="resultNickname"></td>
+        </tr>
+        <tr>
+          <td>Nomor Telepon:</td>
+          <td id="resultPhone"></td>
+        </tr>
+        <tr>
+          <td>Jenis Kelamin:</td>
+          <td id="resultGender"></td>
+        </tr>
+        <tr>
+          <td>Bidang Hobi:</td>
+          <td id="resultHobby"></td>
+        </tr>
+        <tr>
+          <td>Kota Kuliah:</td>
+          <td id="resultCity"></td>
+        </tr>
+        <tr>
+          <td>Semester:</td>
+          <td id="resultSemester"></td>
+        </tr>
+        <tr>
+          <td>IPK:</td>
+          <td id="resultIpk"></td>
+        </tr>
+        <tr>
+          <td>Total SKS:</td>
+          <td id="resultSks"></td>
+        </tr>
+        <tr>
+          <td>Biografi Singkat:</td>
+          <td id="resultBio"></td>
+        </tr>
+      </table>
+      <button onclick="goBack()">Kembali</button>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Link ke file JavaScript -->
+  </body>
+</html>
